@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PropEase.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60128e0c8964f8963a2afae80905262ab3bef5cc")]
 [assembly: System.Reflection.AssemblyProductAttribute("PropEase.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PropEase.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

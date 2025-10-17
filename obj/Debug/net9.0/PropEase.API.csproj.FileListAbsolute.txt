@@ -160,3 +160,4 @@ C:\Desafio_Pooo\PropEase.API\obj\Debug\net9.0\refint\PropEase.API.dll
 C:\Desafio_Pooo\PropEase.API\obj\Debug\net9.0\PropEase.API.pdb
 C:\Desafio_Pooo\PropEase.API\obj\Debug\net9.0\PropEase.API.genruntimeconfig.cache
 C:\Desafio_Pooo\PropEase.API\obj\Debug\net9.0\ref\PropEase.API.dll
+C:\Desafio_Pooo\PropEase.API\obj\Debug\net9.0\PropEase.API.sourcelink.json

@@ -55,7 +55,10 @@ namespace PropEase.API.Controllers
             imovel.Endereco = dto.Endereco;
             imovel.Numero = dto.Numero;
             imovel.ProprietarioId =  dto.ProprietarioId;
-            imovel.Alugado = dto.Alugado;
+            if (dto.Alugado)
+                imovel.Alugar();
+            else
+                imovel.Disponibilizar();
             imovel.Proprietario = null; 
 
             var novo = await _service.AddAsync(imovel);

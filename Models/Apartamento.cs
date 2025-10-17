@@ -2,17 +2,19 @@ namespace PropEase.API.Models
 {
     public class Apartamento : Imovel
     {
-        public override bool EstaAlugado() => Alugado;
-
-        public override string EstaAlugadoMensagem()
-            => Alugado
-                ? $"O apartamento de número {GetNumero()} está alugado"
-                : $"O apartamento de número {GetNumero()} está disponível";
-
-        public override int CalcularAluguel(int periodo)
+       
+        public override decimal CalcularAluguel(int dias)
         {
-            int valorBase = 100;
-            return periodo > 30 ? (int)(periodo * valorBase * 0.95) : periodo * valorBase;
+            const decimal valorDiaria = 100m;
+            decimal valor = dias * valorDiaria;
+            return valor;
+        }
+
+        public override string ObterStatusAluguel()
+        {
+            return alugado
+                ? $"O apartamento nº {numero} está alugado"
+                : $"O apartamento nº {numero} está disponível";
         }
     }
 }

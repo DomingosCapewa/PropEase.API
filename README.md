@@ -2,6 +2,27 @@
 
 API REST simples para gerenciar imóveis (casas e apartamentos) e proprietários, implementando os pilares de POO (abstração, encapsulamento, herança e polimorfismo). Persistência com Entity Framework Core + SQLite.
 
+## Como o projeto atende ao desafio de POO
+
+- Classe abstrata `Imovel` com:
+  - Atributos protegidos: `id`, `endereco`, `numero`, `alugado`, `proprietario` (atende ao requisito do desafio)
+  - Propriedades públicas para o EF Core: `Id`, `Endereco`, `Numero`, `ProprietarioId`, `Proprietario`
+  - Encapsulamento do estado: `Alugado` com setter privado; mudança de estado via `Alugar()` e `Disponibilizar()`
+  - `abstract decimal CalcularAluguel(int dias)` e `virtual string ObterStatusAluguel()`
+- Herança: `Casa` e `Apartamento` herdam de `Imovel`
+- Polimorfismo: cada subclasse sobrescreve `CalcularAluguel` e `ObterStatusAluguel()` com mensagens/valores próprios
+
+Mapa do menu (console) → endpoints (API):
+
+| Console          | Endpoint API                                        |
+| ---------------- | --------------------------------------------------- |
+| Cadastrar imóvel | POST `/api/imoveis`                                 |
+| Listar imóveis   | GET `/api/imoveis`                                  |
+| Alugar           | POST `/api/imoveis/alugar/{id}`                     |
+| Disponibilizar   | PUT `/api/imoveis/disponibilizar/{id}`              |
+| Calcular aluguel | GET `/api/imoveis/{id}/calcular-aluguel?periodo=30` |
+| Excluir          | DELETE `/api/imoveis/{id}`                          |
+
 ## Requisitos
 
 - .NET SDK 9.0
@@ -96,10 +117,3 @@ Aplicação ficará disponível em:
 - Erro "no such table": garanta que as migrações foram aplicadas (o app faz `Database.Migrate()` na inicialização). Se necessário, apague o arquivo `propease.db` e rode `dotnet run` novamente.
 - Connection string: verifique os arquivos `appsettings.json` e `appsettings.Development.json`. O log de inicialização mostra a "Connection String (efetiva)" usada.
 - Porta: configurada em `Properties/launchSettings.json` (http://localhost:5150).
-
-## Próximos passos (sugestões)
-
-- DTOs de saída para evitar expor entidades diretamente
-- Validações com FluentValidation
-- Tratamento global de erros (ProblemDetails)
-- Autenticação/autorização básica

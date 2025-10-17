@@ -2,29 +2,42 @@ namespace PropEase.API.Models
 {
     public abstract class Imovel
     {
-        public int Id { get; set; }
+       
+        protected int id;
+        protected string endereco = string.Empty;
+        protected int numero;
+        protected bool alugado;
+        protected Proprietario? proprietario;
+
+      
+        public int Id { get => id; set => id = value; }
+        public string Endereco { get => endereco; set => endereco = value; }
+        public int Numero { get => numero; set => numero = value; }
+       
+        public bool Alugado { get => alugado; private set => alugado = value; }
 
         
-        public string Endereco { get; set; } = string.Empty;
-        public int Numero { get; set; }
-        public bool Alugado { get; set; }
+        public int ProprietarioId { get; set; }
+        public Proprietario? Proprietario { get => proprietario; set => proprietario = value; }
 
-    public int ProprietarioId { get; set; }
-    public Proprietario? Proprietario { get; set; }
+        
+        public abstract decimal CalcularAluguel(int dias);
 
-    public string GetEndereco() => Endereco;
-    public void SetEndereco(string endereco) => Endereco = endereco;
+       
+        public virtual string ObterStatusAluguel()
+        {
+            return alugado ? "Alugado" : "Disponível";
+        }
 
-    public int GetNumero() => Numero;
-    public void SetNumero(int numero) => Numero = numero;
+       
+        public void Alugar()
+        {
+            alugado = true;
+        }
 
-    public bool GetAlugado() => Alugado;
-        public void Alugar() => Alugado = true;
-        public void Disponibilizar() => Alugado = false;
-
-    public abstract bool EstaAlugado();
-    public string ContatoProprietario() => Proprietario != null ? Proprietario.ContatoProprietario() : string.Empty;
-        public abstract int CalcularAluguel(int periodo);
-        public abstract string EstaAlugadoMensagem();
+        public void Disponibilizar()
+        {
+            alugado = false;
+        }
     }
 }
