@@ -13,8 +13,6 @@ if (string.IsNullOrWhiteSpace(configuredConn))
   configuredConn = $"Data Source={fallbackPath}";
 }
 
-Console.WriteLine("Connection String (efetiva):");
-Console.WriteLine(configuredConn);
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -25,10 +23,6 @@ builder.Services.AddScoped<ProprietarioService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
-Console.WriteLine("Connection String (efetiva):");
-Console.WriteLine(configuredConn);
 
 
 var app = builder.Build();
